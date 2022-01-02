@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="anime.min.js"></script>
+   </head>
+   <style>
+      .path-anime{
+         
+      }
+      body{
+         margin: 0;
+         width: 100vw;
+         height: 100vh;
+      }
+      #box{
+         position: absolute;
+         bottom: 0;
+         left: 0;
+         right: 0;
+         margin-left: auto;
+         fill:indigo;
+      }
+      #box  g {
+            width: 100%;
+            height: 100%;
+            color: indigo;
+         }
+         #box  g *{
+            width: 100%;
+            height: 100%;
+            stroke: indigo;
+            
+         }
+      .scence-container{
+         width: 100%;
+         height: 100%;
+         position: relative;
+         display: flex;
+      }
+      .flex-container {
+         width: 100%;
+         height: 100vh;
+      }
+      .flex-container svg{
+         margin: auto;
+      }
+      .flying-obj{
+         position: absolute;
+         width: 40px;
+         height: 40px;
+         align-self: flex-start;
+      }
+      .fading{
+         transition: all 0.2s;
+         opacity: 0;
+
+      }
+      .path-svg{
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        margin: auto;
+      }
+      .path-svg path{
+         width: 100%!important;         
+      }
+   </style>
+<body>
+   <div class="flex-container">
+   <div class="scence-container">
+   <svg preserveAspectRatio="xMidYMid meet" viewBox="0 0 300 400" width="1000" class="path-svg" x="0" y="0" height="100%" id="ball-path">
+      <path class="path-anime" d="m 330.02413,38.2663 c0,0 -191,-38 -234,19c-43,57 6,112 115,120c109,8 203,-46 183,-67c-20,-21 -140,-64 -251,-33c-111,31 -157,60 -131,89c26,29 332,63 352,34c20,-29 -149,-33 -175,-3c-26,30 -11,56 -11.02413,55.7337c-0.02413,-0.2663 10.02413,9.2663 0,0" fill="none" id="path34" stroke="#000000" stroke-width="0.26458px"/>
+   </svg>
+   <svg width="405.06631" class="path-svg" height="273.70244" id="camera-path" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg">
+      <path d="m70.75146,6.46062c-33,17 -80,47 -69,62c11,15 62,40 155,52c93,12 248,-28 243,-44c-5,-16 -90,-47 -163,-45c-73,2 -165,-3 -191,13c-26,16 -57,62 -29,76c28,14 135,40 167,40c32,0 133,-4 168,-8c35,-4 55,-36 44,-38c-11,-2 -324,-22 -319,34c5,56 29,58 89,68c60,10 119,4 128,-7c9,-11 -64,-41 -82,-27c-18,14 -57,18 -35,44c22,26 25,26 24.24854,25.53938" fill="none" id="svg_2" stroke="#000000" stroke-width="0.26458px"/>
+     </svg>
+   <svg id="box" width="160.93758" height="125.50215" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg">
+
+      <metadata id="metadata5224">image/svg+xml</metadata>
+     
+      <g class="layer">
+       <title>Layer 1</title>
+      
+       <g id="layer1" transform="translate(-18.466661,-171.67717)">
+        <path d="m99.02972,185.14932c17.79928,8.86847 35.59855,17.73693 53.39782,26.6054c-17.79927,8.86846 -35.59855,17.73693 -53.39782,26.6054c-17.79928,-8.86847 -35.59855,-17.73693 -53.39782,-26.6054c17.79927,-8.86846 35.59855,-17.73693 53.39782,-26.6054z" fill="#ffffff" fill-rule="evenodd" id="rect5538" stroke="#000000" stroke-dashoffset="0" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="4" stroke-width="0.52917"/>
+        <path d="m152.72032,270.24236c-17.8752,8.89079 -35.7504,17.78159 -53.6256,26.67238c-0.02167,-19.51821 -0.04333,-39.03641 -0.065,-58.55462c17.79927,-8.86846 35.59853,-17.73693 53.3978,-26.60539c0.0976,19.49588 0.1952,38.99175 0.2928,58.48763z" fill="#ffffff" fill-rule="evenodd" id="rect5538-0" stroke="#000000" stroke-dashoffset="0" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="4" stroke-width="0.52917"/>
+        <path d="m45.33871,270.24235c17.8752,8.89079 35.7504,17.78159 53.6256,26.67238c0.02167,-19.51821 0.04333,-39.03641 0.065,-58.55462c-17.79927,-8.86846 -35.59853,-17.73693 -53.3978,-26.60539c-0.0976,19.49588 -0.1952,38.99175 -0.2928,58.48763z" fill="#ffffff" fill-rule="evenodd" id="rect5538-0-2" stroke="#000000" stroke-dashoffset="0" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="4" stroke-width="0.52917"/>
+        <path d="m99.02971,185.14932c0,17.73693 0,35.47386 0,53.21079" fill="none" id="path5765" stroke="#000000" stroke-miterlimit="4" stroke-width="0.52917"/>
+        <path d="m72.14531,171.86423l26.69586,13.28552l-53.30361,26.5272l-26.69586,-13.28552l53.30361,-26.5272z" fill="#ffffff" fill-rule="evenodd" id="rect5565-2-3" class="lidn" stroke="#000000" stroke-dashoffset="0" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="4" stroke-width="0.52917"/>
+        <path d="m152.33287,211.67687l26.69585,13.28552l-53.30361,26.5272l-26.69585,-13.28552l53.30361,-26.5272z" fill="#ffffff" fill-rule="evenodd" id="rect5565-2" class="lids" stroke="#000000" stroke-dashoffset="0" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="4" stroke-width="0.52917"/>
+        <path d="m45.63193,211.75474l-26.69585,13.28552l53.30361,26.5272l26.69585,-13.28552l-53.30361,-26.5272z" fill="#ffffff" fill-rule="evenodd" id="rect5565-2-6" class="lidw" stroke="#000000" stroke-dashoffset="0" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="4" stroke-width="0.52917"/>
+        <path d="m125.72559,171.86381l-26.69586,13.28552l53.30361,26.5272l26.69586,-13.28552l-53.30361,-26.5272z" fill="#ffffff" fill-rule="evenodd" id="rect5565-2-4" class="lide" stroke="#000000" stroke-dashoffset="0" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="4" stroke-width="0.52917"/>
+      
+        <path d="m152.3244,250.8869c-6.42559,2.96081 -12.85119,5.92163 -19.27678,8.88244" fill="none" id="path6612" stroke="#000000" stroke-linecap="round" stroke-miterlimit="4" stroke-width="0.52917"/>
+        <path d="m152.3244,250.8869c-6.42559,2.96081 -12.85119,5.92163 -19.27678,8.88244" fill="none" id="path6612-7" stroke="#000000" stroke-linecap="round" stroke-miterlimit="4" stroke-width="0.52917" transform="translate(2.0533333e-6,9.5439038)"/>
+        <path d="m152.3244,250.8869c-6.42559,2.96081 -12.85119,5.92163 -19.27678,8.88244" fill="none" id="path6612-5" stroke="#000000" stroke-linecap="round" stroke-miterlimit="4" stroke-width="0.52917" transform="translate(0.03779967,4.7436062)"/>
+       </g>
+      </g>
+     </svg>
+     <img class="flying-obj" id="ball" src="./ball.svg"/>
+     <img class="flying-obj" id="camera" src="./camera.svg"/>
+</div>
+</div>
+<script >
+   const path2String = "m 45.725651,211.67687 28.677664,-14.87371 53.303615,26.5272 -28.677667,14.87371";
+   const path1String = "45.631926,211.75474 -26.695848,13.28552 53.303612,26.5272 26.695848,-13.28552";
+   const path2 = path2String.replace(",", " ");
+   const path3String = "m 45.631926,211.75474 0.102664,-14.87371 53.30361,26.5272 -0.102662,14.87371";
+   const path1 = path1String.replace(",", " ");
+   const path = anime.path("#path34");
+   var animes = [];
+   var objects = ["ball","camera"];
+   const lidN = {
+      path2:"m 98.792632,171.86423 0.04854,13.28552 -53.303611,26.5272 -0.04854,-13.28552 z",
+      path3:"m 123.36108,197.37762 -24.519912,-12.22787 -53.303611,26.5272 24.519916,12.22787 z"
+   }
+   const lidS = {
+      path2: "m 152.33287,211.67687 0.0485,-13.73978 -53.303611,26.5272 -0.04853,13.73978 z",
+      path3: "m 152.33287,211.67687 -27.54373,-13.73978 -53.303613,26.5272 27.543736,13.73978 z"
+   }
+   const lidE = {
+      path2: "m 99.078269,171.86381 -0.04854,13.28552 53.303611,26.5272 0.0485,-13.28552 z",
+      path3: "m 72.419749,198.39294 26.60998,-13.24361 53.303611,26.5272 -26.61002,13.24361 z"
+   }
+   const lidW = {
+      path2: "m 45.631926,211.75474 -0.04853,-16.5746 53.303612,26.5272 0.04853,16.5746 z",
+      path3: "m 45.631926,211.75474 26.787779,-13.3618 53.303615,26.5272 -26.787782,13.3618 z"
+   }
+   const timeline1 = anime.timeline({
+      duration: 500,
+      autoplay: false
+   })
+   const timeline2 = anime.timeline({
+      duration: 500,
+      autoplay: false
+   })
+    timeline1.add({
+       targets: '.lidn',
+       d:[
+         
+         {value: lidN.path2},
+         {value: lidN.path3}
+       ],
+       easing: "linear",
+    }).add({
+      targets: '.lide',
+       d:[
+         
+         {value: lidE.path2},
+         {value: lidE.path3}
+       ],
+       easing: "linear",
+    })
+    timeline2.add({
+       targets: ".lids",
+       d:[
+         
+         {value: lidS.path2},
+         {value: lidS.path3}
+       ],
+       easing: "linear",
+    }).add({
+      targets: '.lidw',
+       d:[
+         
+         {value: lidW.path2},
+         {value: lidW.path3}
+       ],
+       easing: "linear",
+    })
+   let closeTheBox = () => {
+            timeline1.play();
+            timeline2.play();  
+            timeline1.direction= "reverse";
+            timeline2.direction= "reverse";
+   }
+   let openTheBox = ()=>{
+      
+      timeline1.play();
+      timeline2.play();  
+      timeline1.direction= "normal";
+      timeline2.direction= "normal";
+   }
+   let allocateObjectToPathAnimation = (listOfObject) =>{
+      for(let i = 0; i < listOfObject.length; i+=1){
+         var objName = listOfObject[i];
+         var obj = document.getElementById(objName);
+         var pathSVG = document.getElementById(objName + "-path");
+         let pathLeftOffset = parseInt(pathSVG.getBoundingClientRect().left);
+         var dapath = pathSVG.querySelector("path");
+         let pathAnimeObj = anime.path("#"+dapath.getAttribute("id"));
+         var pathStartCord = dapath.getAttribute("d").split(" ")[1].split(","); //0 for x 1 for y
+         var moveByLeft = pathLeftOffset + parseInt(pathStartCord[1]) - obj.offsetWidth;
+         var moveByTop =  obj.offsetHeight *  0.5 * -1;
+         obj.style.left = moveByLeft + "px";
+         obj.style.top =  moveByTop + "px";
+         let daAnime = anime({
+         targets: "#"+objName,
+         translateX: pathAnimeObj('x'),
+         translateY: pathAnimeObj('y'),
+         //rotate: pathAnimeObj("angle"),
+         easing: "easeInOutCubic",
+         duration: "3000",
+         autoplay:false
+         });
+         if(i === listOfObject.length - 1){
+            console.log(daAnime);
+            daAnime.update((anim) => {
+               let fadeCheckPoint = 78.5
+               if(obj.classList.contains("fading")){
+                  obj.classList.remove("fading");      
+               }
+               if(anim.progress >= fadeCheckPoint ){
+                  obj.classList.add("fading");
+               }
+               if(anim.reversed === true && anim.progress === 100){
+                  openTheBox();
+               }
+            });
+            daAnime.complete((anim)=>{
+               if(anim.reversed === false){
+               closeTheBox(anim.reversed);
+            }
+            }) 
+         }
+         animes.push(daAnime);
+      }
+   }
+   allocateObjectToPathAnimation(objects);
+  for(let myanime of animes){
+      myanime.play();
+   } 
+  window.addEventListener("click",()=>{
+      ballanime.reverse();
+      ballanime.play();
+      
+
+   })  */
+  
+</script>
+</body>
+
+</html>

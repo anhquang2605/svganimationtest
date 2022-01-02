@@ -1,0 +1,58 @@
+#animation-frame{
+    width: 65%;
+    height: 100vh;
+    margin: auto;
+    overflow: hidden;
+    position: relative;
+    border: 1px solid indigo;
+    padding: 2px;
+    border-radius: 5px;
+}
+
+#svg8{
+    position: absolute;
+    bottom: 0;
+}
+#road-morning{
+    position: absolute;
+    bottom: 0;
+}
+#houses-layer{
+   position: absolute;
+   bottom: 190px;
+}
+#mountains-layer{
+   position: absolute;
+   bottom: 200px;
+}
+#farmountains-layer{
+   position: absolute;
+   bottom: 200px;
+}
+#sky{
+   position: absolute;
+   top: 0;
+   color: indigo;
+}
+#sun{
+  transform-origin: center;
+  transform-box: fill-box;
+}
+#sun path{
+   stroke: indigo!important;
+}
+#sun ellipse{
+   fill: indigo!important;
+}
+#clouds{
+   position: absolute;
+   top: 0;
+   left: 10%;
+}
+#clouds path{
+   fill:#aaaaff;
+   transform: translateX(200px);
+}
+#clouds .smallc{
+   transform: translateY(160px);
+}
