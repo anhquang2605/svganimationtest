@@ -47,12 +47,9 @@
 #clouds{
    position: absolute;
    top: 0;
-   left: 10%;
 }
 #clouds path{
-   fill:#aaaaff;
-   transform: translateX(200px);
-}
-#clouds .smallc{
-   transform: translateY(160px);
+   stroke: indigo;
+   fill: white;
+   stroke-width: 2px;
 }

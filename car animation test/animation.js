@@ -75,17 +75,53 @@ var suncore = anime({
   duration: 8000,
   loop: true,
 })
+let cloudContainer = document.getElementById("clouds");
+var smallCloud = document.getElementsByClassName("smallc")[0];
+var largeCloud = document.getElementsByClassName("largec")[0];
+let cloudStore = [smallCloud,largeCloud];
+var loop = 0;
+let OFFSET = 1374.5;
+var replacement = [];
 var clouds = anime({
    targets: "#clouds",
-   translateX: -1800,
+   translateX: -1374.5,
    easing: 'linear',
-   duration: 15000,
+   duration: 60000,
    loop: true,
+   loopBegin: (anim) =>{
+    removeClouds()
+    if(loop == 0){
+        generateClouds(3,OFFSET);
+    }
+    loop += 1;
+    replaceClouds();
+    generateClouds(3);
+   },
    loopComplete: (anim) => {
-
-   }
+       
+        
+   },
 })
-let cloudContainer = document.getElementById("clouds");
-let generateClouds = () => {
-
+let generateClouds = (noOfClouds, offset = 0) => {
+        for (var i = 0; i < noOfClouds; i += 1){
+            let dacloud = cloudStore[Math.floor(Math.random() * 2)].cloneNode(true); //alternating between small or large
+            let xOffset = ((Math.random()*200 + 250) * i + offset) * -1;
+            let yOffset = (Math.random()*235);
+            dacloud.style = "transform: translate(" +xOffset+ "px, " + yOffset + "px);"; 
+            cloudContainer.append(dacloud);  
+            if (offset == 0){
+                let clone = dacloud.cloneNode(true);
+                clone.style = "transform: translate(" + (xOffset - OFFSET)+ "px, " + yOffset + "px);"; 
+                replacement.push(clone);
+            }
+        }
+}
+let replaceClouds = () =>{
+    for (let cloud in replacement){
+        cloudContainer.append(replacement[cloud])
+    }
+    replacement = [];
+}
+let removeClouds = () => {
+    cloudContainer.innerHTML = "";
 }
