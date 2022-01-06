@@ -12,7 +12,7 @@ var morph = anime({
     loop:true
 })
 var wheel = anime({
-    targets: "#g872",
+    targets: "#wheel",
     translateY: -1,
     duration: 500,
     easing: 'easeInQuad',
@@ -34,7 +34,7 @@ var window = anime({
 })
 var road = anime({
     targets: "#g4779",
-    translateX: -950,
+    translateX: -572,
     duration: 3000,
     easing: "linear",
     loop: true,
@@ -46,6 +46,20 @@ var houses= anime({
    easing: "linear",
    loop: true,
 })  
+var cities = anime({
+    targets: ".cities-container",
+    translateX: -2685,
+    duration: 10000,
+    easing: "linear",
+    loop: true,
+})
+var farcity = anime({
+    targets: ".city-far-container",
+    translateX: -2610,
+    duration: 30000,
+    easing: "linear",
+    loop: true,
+})
 var mountains = anime({
    targets: "#mountains",
    translateX: -1620,

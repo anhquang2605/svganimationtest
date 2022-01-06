@@ -1,5 +1,5 @@
 #animation-frame{
-    width: 65%;
+    width: 70%;
     height: 100vh;
     margin: auto;
     overflow: hidden;
@@ -9,11 +9,11 @@
     border-radius: 5px;
 }
 
-#svg8{
+#truck{
     position: absolute;
     bottom: 0;
 }
-#road-morning{
+#road{
     position: absolute;
     bottom: 0;
 }
@@ -52,4 +52,54 @@
    stroke: indigo;
    fill: white;
    stroke-width: 2px;
+}
+#city-layer{
+   position: absolute;
+   bottom: 200px;
+}
+#cloud.night{
+   stroke: white;
+   fill: indigo;
+}
+#truck.night path{
+   fill:  rgb(68,0,170)!important;
+   stroke: white!important;
+}
+#truck.night path#rect10-8-9{
+   fill: white!important;
+}
+#truck.night #wheel circle{
+   fill: white!important;
+   stroke: rgb(68,0,170)!important;
+}
+#road.night{
+   background: rgb(68,0,170);
+}
+#road.night rect{
+   fill: white!important;
+}
+#city-far{
+   position: absolute;
+   bottom: 200px;
+}
+#animation-frame.night{
+   background: rgb(226,199,40);
+   background: linear-gradient(0deg, rgba(226,199,40,1) 4%, rgba(198,163,63,1) 5%, rgba(96,41,143,1) 29%, rgba(68,0,170,1) 57%);
+}
+#mountains-layer.night{
+   display:none;
+}
+#farmountains-layer.night{
+   display:none;
+}
+#houses-layer.night{
+   display: none;
+}
+#sky.night #sun{
+   display: none;
+}
+#clouds.night path{
+   stroke: white!important;
+   fill:  rgb(68,0,170);
+
 }
