@@ -139,3 +139,29 @@ let replaceClouds = () =>{
 let removeClouds = () => {
     cloudContainer.innerHTML = "";
 }
+
+let toggleDayOrNight = () =>{
+    var animationFrame = document.getElementById("animation-frame");
+    var daytime = animationFrame.dataset.daytime;
+    if(daytime == -1){
+        let nightEles = document.getElementsByTagName("svg");
+        for (var i = 0; i < nightEles.length; i += 1){
+            nightEles[i].classList.remove("night");
+            nightEles[i].classList.add("morning");
+            animationFrame.classList.remove("night");
+            animationFrame.classList.add("morning");
+        }
+    } else {
+        let morningEles = document.getElementsByTagName("svg");
+        for (var i = 0; i < morningEles.length; i += 1){
+            morningEles[i].classList.remove("morning");
+            morningEles[i].classList.add("night");
+            animationFrame.classList.add("night");
+            animationFrame.classList.remove("morning");
+        }
+    }
+    animationFrame.dataset.daytime = daytime*-1;
+}
+setInterval(()=>{
+    toggleDayOrNight();
+}, 5000)

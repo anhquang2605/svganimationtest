@@ -57,8 +57,12 @@
    position: absolute;
    bottom: 200px;
 }
-#cloud.night{
+#clouds.night{
    stroke: white;
+   fill: indigo;
+}
+#clouds.morning{
+   stroke: none;
    fill: indigo;
 }
 #truck.night path{
@@ -86,20 +90,34 @@
    background: rgb(226,199,40);
    background: linear-gradient(0deg, rgba(226,199,40,1) 4%, rgba(198,163,63,1) 5%, rgba(96,41,143,1) 29%, rgba(68,0,170,1) 57%);
 }
+#animation-frame.morning{
+   background: white;
+}
 #mountains-layer.night{
-   display:none;
+   opacity: 0;
 }
 #farmountains-layer.night{
-   display:none;
+   opacity: 0;
 }
 #houses-layer.night{
-   display: none;
+   opacity: 0;
 }
 #sky.night #sun{
-   display: none;
+   opacity: 0;
 }
 #clouds.night path{
    stroke: white!important;
    fill:  rgb(68,0,170);
-
+}
+#city-layer.morning{
+   opacity: 0;
+}
+#city-far.morning{
+   opacity: 0;
+}
+#sky.morning #moon{
+   opacity: 0;
+}
+svg{
+   transition: all 2s;
 }
