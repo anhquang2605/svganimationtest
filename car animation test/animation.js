@@ -1,3 +1,13 @@
+let starSpawner = (num, distanceX, offsetY) => {
+    let prototypeStar = document.getElementsByClassName("star")[0];
+    let starContainer = document.getElementById("star");
+    for (var i = 1; i < num; i += 1){
+        let newStar = prototypeStar.cloneNode(true);
+        newStar.style = "transform: translate("+ (Math.random() * 160 + i*distanceX)+"px," + Math.random() * offsetY + "px) scale("+ Math.round(Math.random()*2) +");";
+        starContainer.append(newStar);   
+    }
+}
+starSpawner(8,400,350);
 var morph = anime({
     targets: '.morph-1',
     d:[
@@ -89,6 +99,32 @@ var suncore = anime({
   duration: 8000,
   loop: true,
 })
+var moonshake = anime({
+    targets: "#moon",
+    rotate: -45,
+    easing: "spring",
+    duration: 200,
+    loop:true,
+    endDelay: 1000,
+    direction: "alternate",
+})
+var starLight = anime({
+    targets: ".star-path",
+    strokeDashoffset: [0,anime.setDashoffset],
+    easing: 'linear',
+    duration: 1000,
+    endDelay: 1000,
+    loop: true,
+    direction: "reverse",
+})
+var starCoreRotate = anime({
+    targets: ".star-rotate",
+    scale: [0,1],
+    easing: "spring",
+    duration: 300,
+    endDelay: 700,
+    loop: true,
+})
 let cloudContainer = document.getElementById("clouds");
 var smallCloud = document.getElementsByClassName("smallc")[0];
 var largeCloud = document.getElementsByClassName("largec")[0];
@@ -117,7 +153,7 @@ var clouds = anime({
    },
 })
 let generateClouds = (noOfClouds, offset = 0) => {
-        for (var i = 0; i < noOfClouds; i += 1){
+        for (var i = 1; i <= noOfClouds; i += 1){
             let dacloud = cloudStore[Math.floor(Math.random() * 2)].cloneNode(true); //alternating between small or large
             let xOffset = ((Math.random()*200 + 250) * i + offset) * -1;
             let yOffset = (Math.random()*235);
@@ -125,7 +161,7 @@ let generateClouds = (noOfClouds, offset = 0) => {
             cloudContainer.append(dacloud);  
             if (offset == 0){
                 let clone = dacloud.cloneNode(true);
-                clone.style = "transform: translate(" + (xOffset - OFFSET)+ "px, " + yOffset + "px);"; 
+                clone.style = "transform: translate(" + (xOffset - OFFSET)+ "px, " + yOffset + "px)"; 
                 replacement.push(clone);
             }
         }
@@ -143,8 +179,12 @@ let removeClouds = () => {
 let toggleDayOrNight = () =>{
     var animationFrame = document.getElementById("animation-frame");
     var daytime = animationFrame.dataset.daytime;
+    var sun = document.getElementsByClassName("sun")[0];
+    var moon = document.getElementsByClassName("moon")[0];
     if(daytime == -1){
         let nightEles = document.getElementsByTagName("svg");
+        sun.style = "transform: translateY(0px);";
+        moon.style = "transform: translateY(1000px);";
         for (var i = 0; i < nightEles.length; i += 1){
             nightEles[i].classList.remove("night");
             nightEles[i].classList.add("morning");
@@ -153,6 +193,8 @@ let toggleDayOrNight = () =>{
         }
     } else {
         let morningEles = document.getElementsByTagName("svg");
+        moon.style = "transform: translateY(0px)";
+        sun.style = "transform: translateY(1000px)";
         for (var i = 0; i < morningEles.length; i += 1){
             morningEles[i].classList.remove("morning");
             morningEles[i].classList.add("night");
@@ -162,6 +204,8 @@ let toggleDayOrNight = () =>{
     }
     animationFrame.dataset.daytime = daytime*-1;
 }
+
+
 setInterval(()=>{
     toggleDayOrNight();
-}, 5000)
+}, 10000)  

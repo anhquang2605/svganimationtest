@@ -34,9 +34,12 @@
    top: 0;
    color: indigo;
 }
-#sun{
+#sun,#moon{
   transform-origin: center;
   transform-box: fill-box;
+}
+#moon{
+   rotate: 45deg;
 }
 #sun path{
    stroke: indigo!important;
@@ -82,6 +85,9 @@
 #road.night rect{
    fill: white!important;
 }
+#road.morning{
+   background: white!important;
+}
 #city-far{
    position: absolute;
    bottom: 200px;
@@ -102,9 +108,7 @@
 #houses-layer.night{
    opacity: 0;
 }
-#sky.night #sun{
-   opacity: 0;
-}
+
 #clouds.night path{
    stroke: white!important;
    fill:  rgb(68,0,170);
@@ -115,9 +119,35 @@
 #city-far.morning{
    opacity: 0;
 }
-#sky.morning #moon{
+svg{
+   transition: fill 1s, opacity 4s, backgroundColor 4s, top 4s;
+}
+.moon, .sun{
+   transition: transform 2s;
+}
+#sky.night .sun{
+   transform: translateY(1000px)
+}
+#sky.morning .moon{
+   transform: translateY(1000px)
+}
+#star{
+   position: absolute;
+   top:0;
+}
+#star.night{
+   opacity: 1;
+}
+.star-rotate{
+   transform-origin: 50% 50%;
+   transform-box: fill-box;
+}
+#star.morning{
    opacity: 0;
 }
-svg{
-   transition: all 2s;
+#star{
+   transition: opacity 0.3s;
+}
+.star-rotate{
+   transform: scale(-1);
 }
