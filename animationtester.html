@@ -73,12 +73,41 @@
 <body>
    <div class="flex-container">
    <div class="scence-container">
-   <svg preserveAspectRatio="xMidYMid meet" viewBox="0 0 300 400" width="1000" class="path-svg" x="0" y="0" height="100%" id="ball-path">
-      <path class="path-anime" d="m 330.02413,38.2663 c0,0 -191,-38 -234,19c-43,57 6,112 115,120c109,8 203,-46 183,-67c-20,-21 -140,-64 -251,-33c-111,31 -157,60 -131,89c26,29 332,63 352,34c20,-29 -149,-33 -175,-3c-26,30 -11,56 -11.02413,55.7337c-0.02413,-0.2663 10.02413,9.2663 0,0" fill="none" id="path34" stroke="#000000" stroke-width="0.26458px"/>
+   <svg>
+      <g id="ball">
+            <circle
+         style="opacity:1;fill:#460082;fill-opacity:1;fill-rule:evenodd;stroke:#ffffff;stroke-width:0.5291667;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+         id="path4991"
+         cx="305.51553"
+         cy="17.920185"
+         r="13.229166" />
+      <ellipse
+         style="opacity:1;fill:#460082;fill-opacity:1;fill-rule:evenodd;stroke:#ffffff;stroke-width:0.5291667;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+         id="path4993"
+         cx="305.51553"
+         cy="7.6911798"
+         rx="5.2024026"
+         ry="2.247438" />
+      <path
+         style="fill:#460082;fill-opacity:1;stroke:#ffffff;stroke-width:0.5291667;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         d="m 301.9661,9.6803206 c 0,0 -2.92376,3.0176674 -3.12421,9.6993974 1e-5,6.94902 4.39849,11.69837 4.39849,11.69837"
+         id="path4995"
+         inkscape:connector-curvature="0"
+         sodipodi:nodetypes="ccc" />
+      <path
+         style="fill:#460082;fill-opacity:1;stroke:#ffffff;stroke-width:0.52916676;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         d="m 308.3353,9.6803206 c 0,0 2.92376,3.0176674 3.12421,9.6993974 -1e-5,6.94902 -4.39849,11.69837 -4.39849,11.69837"
+         id="path4995-7"
+         inkscape:connector-curvature="0"
+         sodipodi:nodetypes="ccc" />
+      </g>
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="M 291.85833,21.712378 C 44.901281,63.406424 19.777945,102.96231 19.777945,102.96231 c 0,0 -27.2614916,18.17433 39.555888,43.8322 66.817387,25.65788 246.422497,-4.81085 251.767907,-14.96709 5.34537,-10.15624 -89.80257,-45.435817 -134.16932,-38.486811 -44.36674,6.949011 -145.929154,23.519721 -142.187382,42.763121 3.741774,19.24341 36.883194,45.43582 81.249932,61.472 44.36675,16.03617 117.06406,11.22531 125.61668,8.01808 8.55262,-3.20723 68.42101,-24.5888 55.05752,-29.39965 -13.36347,-4.81085 -215.953773,0 -213.815617,24.05426 2.138156,24.05426 72.697307,71.09369 72.697307,71.09369 l -1.06908,3.20723"
+       id="ball-path"
+       class="item-path"
+       inkscape:connector-curvature="0" />
    </svg>
-   <svg width="405.06631" class="path-svg" height="273.70244" id="camera-path" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg">
-      <path d="m70.75146,6.46062c-33,17 -80,47 -69,62c11,15 62,40 155,52c93,12 248,-28 243,-44c-5,-16 -90,-47 -163,-45c-73,2 -165,-3 -191,13c-26,16 -57,62 -29,76c28,14 135,40 167,40c32,0 133,-4 168,-8c35,-4 55,-36 44,-38c-11,-2 -324,-22 -319,34c5,56 29,58 89,68c60,10 119,4 128,-7c9,-11 -64,-41 -82,-27c-18,14 -57,18 -35,44c22,26 25,26 24.24854,25.53938" fill="none" id="svg_2" stroke="#000000" stroke-width="0.26458px"/>
-     </svg>
    <svg id="box" width="160.93758" height="125.50215" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg">
 
       <metadata id="metadata5224">image/svg+xml</metadata>
@@ -210,7 +239,7 @@
          });
          if(i === listOfObject.length - 1){
             console.log(daAnime);
-            daAnime.update((anim) => {
+            daAnime.update = (anim) => {
                let fadeCheckPoint = 78.5
                if(obj.classList.contains("fading")){
                   obj.classList.remove("fading");      
@@ -221,27 +250,17 @@
                if(anim.reversed === true && anim.progress === 100){
                   openTheBox();
                }
-            });
-            daAnime.complete((anim)=>{
+            };
+            daAnime.complete = (anim)=>{
                if(anim.reversed === false){
                closeTheBox(anim.reversed);
             }
-            }) 
+            }
          }
          animes.push(daAnime);
       }
    }
    allocateObjectToPathAnimation(objects);
-  for(let myanime of animes){
-      myanime.play();
-   } 
-  window.addEventListener("click",()=>{
-      ballanime.reverse();
-      ballanime.play();
-      
-
-   })  */
-  
 </script>
 </body>
 

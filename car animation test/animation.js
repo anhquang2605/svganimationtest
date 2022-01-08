@@ -7,7 +7,7 @@ let starSpawner = (num, distanceX, offsetY) => {
         starContainer.append(newStar);   
     }
 }
-starSpawner(8,400,350);
+starSpawner(8,500,350);
 var morph = anime({
     targets: '.morph-1',
     d:[
@@ -112,8 +112,8 @@ var starLight = anime({
     targets: ".star-path",
     strokeDashoffset: [0,anime.setDashoffset],
     easing: 'linear',
-    duration: 1000,
-    endDelay: 1000,
+    duration: 500,
+    endDelay: 500,
     loop: true,
     direction: "reverse",
 })
