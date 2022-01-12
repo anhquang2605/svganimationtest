@@ -77,7 +77,7 @@
       timeline1.direction= "normal";
       timeline2.direction= "normal";
    }
-   let allocateObjectToPathAnimation = (listOfObject) =>{
+/*    let allocateObjectToPathAnimation = (listOfObject) =>{
       for(let i = 0; i < listOfObject.length; i+=1){
          var objName = listOfObject[i];
          var obj = document.getElementById(objName);
@@ -121,15 +121,80 @@
          }
          animes.push(daAnime);
       }
-   }
+   } */
    let ballPath = anime.path('#ball-path');
    let ballMoveAlong = anime({
        targets: "#ball",
        translateX:  ballPath('x'),
        translateY: ballPath('y'),
-       rotate: ballPath('angle'),
-       easing: "linear",
+       easing: "easeInOutExpo",
        duration: 10000,
-       loop: true
+       update: (anim) => {
+          if(Math.round(anim.progress) == 80){
+            let ball = document.getElementById("ball");
+            ball.classList.add("fading");
+          }
+          if(Math.round(anim.progress) == 85){
+             closeTheBox();
+          }
+       }
    })
-   closeTheBox();
+   let cameraPath = anime.path("#camera-path")
+   let cameraMoveAlong = anime({
+      targets: "#camera",
+      translateX:  cameraPath('x'),
+      translateY: cameraPath('y'),
+      easing: "easeInOutExpo",
+      duration: 10000,
+      update: (anim) => {
+         if(Math.round(anim.progress) == 85){
+           let camera = document.getElementById("camera");
+           camera.classList.add("fading");
+         }
+      }
+   })
+   let robotPath = anime.path("#robot-path")
+   let robotMoveAlong = anime({
+      targets: "#robot",
+      translateX: robotPath('x'),
+      translateY: robotPath("y"),
+      easing: "easeInOutExpo",
+      duration: 10000,
+      update: (anim) => {
+         if(Math.round(anim.progress) == 85){
+            let robot = document.getElementById("robot");
+            robot.classList.add("fading");
+         }
+      }
+   })
+   let shoePath = anime.path("#shoe-path")
+   let shoeMoveAlong = anime({
+      targets: "#shoe",
+      translateX: shoePath('x'),
+      translateY: shoePath('y'),
+      easing: "easeInOutExpo",
+      duration: 10000,
+      update: (anim) =>{
+         if(Math.round(anim.progress) == 1){
+            anim.pause();
+         }
+         if(Math.round(anim.progress) == 85){
+            let shoe = document.getElementById("shoe");
+            shoe.classList.add("fading");
+         }
+      }
+   })
+   let vasePath = anime.path("#vase-path")
+   let vaseMoveAlong = anime({
+      targets: "#vase",
+      translateX: vasePath('x'),
+      translateY: vasePath('y'),
+      easing: "easeInOutExpo",
+      duration: 10000,
+      update: (anim) =>{
+         if(Math.round(anim.progress) == 85){
+            let vase = document.getElementById("vase");
+            vase.classList.add("fading");
+         }
+      }
+   })

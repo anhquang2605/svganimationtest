@@ -1,0 +1,8 @@
+svg circle{
+    transform-origin: center;
+    transform-box: fill-box;
+}
+svg .flower-pedal{
+    transform-origin: center;
+    transform-box: fill-box;
+}

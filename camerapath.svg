@@ -8,7 +8,7 @@
    version="1.1"
    id="svg38"
    inkscape:version="1.1.1 (3bf5ae0d25, 2021-09-20)"
-   sodipodi:docname="ball with path.svg"
+   sodipodi:docname="camerapath.svg"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns="http://www.w3.org/2000/svg"
@@ -17,7 +17,19 @@
    xmlns:cc="http://creativecommons.org/ns#"
    xmlns:dc="http://purl.org/dc/elements/1.1/">
   <defs
-     id="defs32" />
+     id="defs32">
+    <inkscape:path-effect
+       effect="simplify"
+       id="path-effect632"
+       is_visible="true"
+       lpeversion="1"
+       steps="1"
+       threshold="0.000859316"
+       smooth_angles="360"
+       helper_size="0"
+       simplify_individual_paths="false"
+       simplify_just_coalesce="false" />
+  </defs>
   <sodipodi:namedview
      id="base"
      pagecolor="#ffffff"
@@ -25,9 +37,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.49497475"
-     inkscape:cx="-39.395949"
-     inkscape:cy="158.59395"
+     inkscape:zoom="0.35"
+     inkscape:cx="-410"
+     inkscape:cy="130"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -57,9 +69,6 @@
      inkscape:label="Layer 1"
      inkscape:groupmode="layer"
      id="layer1">
-    <path
-       style="fill:none;stroke:#000000;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       d="m 297.4472,25.323707 c 0,0 -36.88319,-18.174329 -111.71865,-23.519719 C 110.89308,-3.541402 33.919453,5.545761 8.7961226,21.581933 -16.327207,37.618104 23.763213,55.257893 23.763213,55.257893 c 0,0 80.715397,36.348654 190.830437,36.883194 110.11506,0.53454 58.26477,-51.315749 58.26477,-51.315749 0,0 -55.59207,-25.657874 -131.49662,-13.898015 C 65.457263,38.687182 -19.534447,54.723352 10.399743,72.897686 40.333933,91.072007 249.33869,139.71507 273.92749,117.79896 298.51628,95.882867 238.64791,68.086829 238.64791,68.086829 c 0,0 -273.683987,-45.435818 -183.881427,38.486821 89.802557,83.92262 186.019587,44.90127 186.019587,44.90127 0,0 26.19241,-14.43255 4.27631,-24.05425 -21.9161,-9.62171 -191.364977,-16.03617 -170.517957,13.36347 20.84703,29.39965 55.057517,49.1776 73.766387,55.59206"
-       id="path541" />
+ 
   </g>
 </svg>
