@@ -1,27 +1,27 @@
 var bodyd = anime({
-    targets: "#flower-body",
-    strokeDashoffset: [anime.setDashoffset,0],
-    duration: 5000,
+
 })
 var flowerTimeline = anime.timeline({
-    duration: 5000,
+    duration: 6000,
+    loop: true
 })
 flowerTimeline
-/* .add({
+.add({
     targets: "#flower-body",
     strokeDashoffset: [anime.setDashoffset,0],
     duration: 500,
-}) */
+    easing: "linear"
+}) 
 .add({
     targets: "#flower-core",
     scale: [0,1],
-    duration: 1500,
+    duration: 500,
     easing: "spring"
 })
 .add({
     targets: ".flower-pedal",
     scale: [0,1],
-    duration: 100,
+    duration: 50,
     easing: "linear",
     delay:anime.stagger(80)
 })
@@ -69,4 +69,9 @@ flowerTimeline
         }
     ],
     duration: 200
+}).add({
+    targets: ".flower-pedal",
+    rotate: 360,
+    duration: 400,
+    easing: "linear"
 })
