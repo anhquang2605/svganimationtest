@@ -97,7 +97,7 @@ body{
    transform-box: fill-box;
 }
 #flower-core{
-   fill: khaki!important;
+   fill: #f0e68c!important;
 }
 .ball-squeeze{
    transform-origin: 50% 100%;
@@ -217,7 +217,7 @@ body{
    stroke: rgb(148, 0, 253)!important;
 }
 #marked-begin path{
-   stroke: indigo!important;
+   stroke: #4b0082!important;
 }
 #marked-begin circle{
    transform-origin: center;
@@ -279,6 +279,39 @@ body{
 #cut-effect path{
    stroke: #800000!important;
 }
-#robot-svg{
-   height: 170px!important;
+#antena-effect circle{
+   transform-origin: center;
+   transform-box: fill-box;
+}
+#star-eye, #star-eye path{
+   transform-origin: center;
+   transform-box: fill-box;
+}
+#eye-dizzy path{
+   transform-origin: center;
+   transform-box: fill-box;
+}
+#right-arm rect, #left-arm rect{
+   transform-origin: 50% 19%;
+   transform-box: fill-box;
+}
+#antena-bulb{
+   transform-origin: 50% 220%;
+   transform-box: fill-box;
+}
+#robot-body-box{
+   transform-origin: center;
+   transform-box: fill-box;
+}
+#right-arm-rotate, #left-arm-rotate{
+   transform-origin: 91.5% 96.5%;
+   transform-box: fill-box;
+}
+#wrapper-bot-l{
+   transform-origin: 119% 119%;
+   transform-box: content;
+}
+#wrapper-bot-r{
+   transform-origin: 300% 300%;
+   transform-box: fill-box;
 }
