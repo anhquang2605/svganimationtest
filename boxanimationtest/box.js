@@ -908,7 +908,7 @@ let restoreInitialStateOfShoe = () =>{
    shoeTimeline();
 }
 //Robot animation
-let lightningPathDur = 250;
+let lightningPathDur = 200; 
 let delayDur = lightningPathDur*11;
 let robotEyesDur = lightningPathDur;
 let robotEyesTimeSync = delayDur;
@@ -917,7 +917,7 @@ let antenaRight = "m 82.937424,88.699383 c 0,0 3.307291,-6.520089 7.559524,-8.97
 let antenaMid = "m 82.960845,88.839136 c 0,0 -0.04102,-7.396539 -0.04102,-12.530364";
 //Robot startup
 
-let antenaEffect = anime.timeline({loop:false});
+/* let antenaEffect = anime.timeline({loop:false});
 antenaEffect.add({
    targets: "#eye-dizzy",
    opacity: [0],
@@ -954,15 +954,12 @@ antenaEffect.add({
    fill: "#f0e68c",
    duration: lightningPathDur,
    easing: "linear",
-})
-let robotEyesOn = anime.timeline({loop: false})
-robotEyesOn.add({
-   delay: lightningPathDur*11,
+}).add({
    targets: "#eyes ellipse",
    fill: ["#ffffff","#f0e68c"],
    duration: robotEyesDur,
    easing: "easeInOutBounce"
-})
+}) */
 //eyes on loop, animation continue
 let armTurnDur = 140;
 let botArmtranslateX = 6;
@@ -971,283 +968,343 @@ let headSideMovementX = 4;
 let headSideMovementY = 1;
 let antenaAngle = 70;
 let delayDurRobotHead = 500;
-let robotTurnDur = 400;
-let eyesLoop = anime.timeline({
-
-}).add({
-   delay: lightningPathDur*11,
-   targets: "#eyes ellipse",
-   fill: ["#ffffff","#f0e68c"],
-   duration: robotEyesDur,
-   easing: "easeInOutBounce"
-}).add({
-   targets: "#heart-path path",
-   strokeDashoffset: [anime.setDashoffset,0],
-   duration: robotEyesDur,
-   easing: "linear"
-}).add({
-   targets: "#heart-path path",
-   duration: robotEyesDur,
-   easing: "linear",
-   fill: "#4b0082",
-}).add({
-   targets: "#star-eye",
-   opacity: [0,1],
-   scale: [0.1,1],
-   duration: robotEyesDur*2,
-   easing: "linear" 
-},"-="+robotEyesDur*2).add({
-   targets: "#left-arm #top-part-l",
-   duration: armTurnDur,
-   rotate: 90,
-   easing: "linear",
-}).add({
-   targets: "#right-arm #top-part-r",
-   duration: armTurnDur,
-   rotate: -90,
-   easing: "linear",
-},"-="+armTurnDur).add({
-   targets: "#left-arm #bot-part-l",
-   translateX: -botArmtranslateX,
-   translateY: -botArmtranslateY,
-   duration: armTurnDur,
-   easing: "linear"
-},"-=" + armTurnDur).add({
-   targets: "#right-arm #bot-part-r",
-   translateX: botArmtranslateX,
-   translateY: -botArmtranslateY,
-   duration: armTurnDur,
-   easing: "linear"
-},"-=" + armTurnDur).add({
-   delay: 500,
-   targets: "#right-arm #bot-part-r",
-   scaleY: -1,
-   duration: armTurnDur,
-   easing: "linear", 
-}).add({
-   delay: 500,
-   targets: "#left-arm #bot-part-l",
-   scaleY: -1,
-   duration: armTurnDur,
-   easing: "linear", 
-}).add({
-   targets: "#right-arm #bot-part-r",
-   scaleY: 1,
-   duration: armTurnDur,
-   easing: "linear", 
-},"-="+armTurnDur).add({
-   delay: 500,
-   targets: "#left-arm #bot-part-l",
-   scaleY: 1,
-   duration: armTurnDur,
-   easing: "linear", 
-}).add({
-   targets: "#right-arm #bot-part-r",
-   scaleY: -1,
-   duration: armTurnDur,
-   easing: "linear", 
-},"-="+armTurnDur).add({//robot head side move
-   targets: "#robot-head",
-   translateX: -headSideMovementX,
-   duration: armTurnDur,
-   easing: "linear",
+let robotTurnDur = 500;
+let delayBetweenTurn = 500;
+let robotOriginalForm;
+let robotTimeline1 = () => {
+   robotOriginalForm = document.getElementById("robot-svg").cloneNode(true);
+   let pulsePath = anime.timeline({
+      loop: true,
    }).add({
-   targets: "#antena-body",
-   d: [{
-      value: antenaRight 
-   }],
-   duration: armTurnDur,
-   easing: "linear"
-},"-="+armTurnDur).add({
-   targets: "#antena-bulb",
-   rotate: antenaAngle,
-   duration: armTurnDur,
-   easing: "linear"
-},"-="+armTurnDur).add({
-   targets: "#antena-body",
-   d: [{
-      value: antenaLeft 
-   }],
-   duration: armTurnDur,
-   easing: "easeOutBounce"
-}).add({
-   targets: "#antena-bulb",
-   rotate: -antenaAngle,
-   duration: armTurnDur,
-   easing: "easeOutBounce"
-},"-="+armTurnDur).add({
-   targets: "#robot-head",
-   translateX: "+="+headSideMovementX*2,
-   duration: armTurnDur*2,
-   easing: "linear",
-}).add({
-   targets: "#antena-body",
-   d: [{
-      value: antenaRight,
-   }],
-   duration: armTurnDur*2,
-   easing: "easeOutBounce"
-},).add({
-   targets: "#antena-bulb",
-   rotate: "+="+ antenaAngle*2,
-   duration: armTurnDur*2,
-   easing: "easeOutBounce"
-},"-="+armTurnDur*2).add({//2nd round
-   targets: "#robot-head",
-   translateX: "-=" + (headSideMovementX*2),
-   duration: armTurnDur*2,
-   easing: "linear",
+      delay: delayDur*1.3,
+      targets: "#pulse-path",
+      duration: lightningPathDur*4,
+      easing: "easeOutQuad",
+      strokeDashoffset: [anime.setDashoffset,0],
    }).add({
-   targets: "#antena-body",
-   d: [{
-      value: antenaLeft 
-   }],
-   duration: armTurnDur,
-   easing: "easeOutBounce"
-}).add({
-   targets: "#antena-bulb",
-   rotate: -antenaAngle,
-   duration: armTurnDur,
-   easing: "easeOutBounce"
-},"-="+armTurnDur).add({//last round back to center
-   targets: "#robot-head",
-   translateX: "+="+headSideMovementX,
-   duration: armTurnDur,
-   easing: "linear",
-}).add({
-   targets: "#antena-body",
-   d: [{
-      value: antenaRight,
-   }],
-   duration: armTurnDur,
-   easing: "easeOutBounce"
-},).add({
-   targets: "#antena-bulb",
-   rotate: "+="+ antenaAngle*2,
-   duration: armTurnDur,
-   easing: "easeOutBounce"
-},"-="+armTurnDur).add({
-   targets: "#antena-body",
-   d: [{
-      value: antenaLeft,
-   }],
-   duration: armTurnDur/2,
-   easing: "easeOutBounce"
-},).add({
-   targets: "#antena-bulb",
-   rotate: "-="+ antenaAngle*2,
-   duration: armTurnDur/2,
-   easing: "easeOutBounce"
-},"-="+armTurnDur/2).add({
-   targets: "#antena-body",
-   d: [{
-      value: antenaMid,
-   }],
-   duration: armTurnDur/4,
-   easing: "easeOutBounce"
-},).add({
-   targets: "#antena-bulb",
-   rotate: "+="+ antenaAngle,
-   duration: armTurnDur/4,
-   easing: "easeOutBounce"
-},"-="+armTurnDur/4)//robot start moving side way
-.add({
-   targets: "#robot-body-box",
-   scaleX: 0.7,
-   duration: robotTurnDur,
-   easing: "linear",
-}).add({
-   targets: "#chest-screen",
-   translateX:-2,
-   duration: 500,
-   easing: "linear",
-},"-="+robotTurnDur).add({
-   targets: "#right-arm",
-   translateX:-5,
-   duration: robotTurnDur,
-   easing: "linear",
-}, "-="+robotTurnDur).add({
-   targets: "#left-arm",
-   translateX:5,
-   duration: robotTurnDur,
-   easing: "linear",
-},"-="+robotTurnDur).add({//arm into first position
-   targets: "#bot-part-r",
-   rotate: 180,
-   duration: robotTurnDur,
-   easing: "linear",
-}).add({
-   targets: '#top-part-r',
-   rotate: "+=90",
-   duration: robotTurnDur,
-   easing: "linear",
-}).add({
-   targets: "#bot-part-r",
-   rotate: 90,
-   translateX: 0,
-   translateY: 0,
-   duration: robotTurnDur,
-   easing: "linear",
-},"-=" + robotTurnDur).add({
-   targets: "#bot-part-l",
-   translateX: 0,
-   translateY: 0.5,
-   duration: robotTurnDur,
-   easing: "linear",
-},"-="+(robotTurnDur*2)).add({
-   targets: "#top-part-l",
-   rotate: "-=90",
-   duration: robotTurnDur,
-   easing: "linear",
-},"-="+(robotTurnDur*2)).add({
-   targets: "#bot-part-l",
-   rotate: "+=90",
-   duration: robotTurnDur,
-   easing: "linear"
-},"-="+robotTurnDur).add({//Robot start turning again
-   targets: "#robot-body-box",
-   scaleX: 1,
-   duration: robotTurnDur,
-   easing: "linear"
-}).add({
-   targets: "#chest-screen",
-   translateX:"+=2",
-   duration: 500,
-   easing: "linear",
-},"-="+robotTurnDur).add({
-   targets: "#top-part-r, #bot-part-r",
-   translateX:"+=5",
-   duration: robotTurnDur,
-   easing: "linear",
-}, "-="+robotTurnDur).add({
-   targets: "#left-arm",
-   translateX:"-=5",
-   duration: robotTurnDur,
-   easing: "linear", //What left? scale the bot part of both arms to make turn illusion
-},"-="+robotTurnDur).add({
-   targets: "#wrapper-bot-l",
-   scaleX: 0.4,
-   duration: robotTurnDur,
-   easing: "linear",
-},"-="+robotTurnDur).add({
-   targets: "#wrapper-bot-r",
-   scaleX: 0.4,
-   duration: robotTurnDur,
-   easing: "linear",
-},"-="+robotTurnDur).add({
-   targets: "#bot-part-r",
-   translateX: "+=116.8",
-   duration: robotTurnDur,
-   easing: "linear",
-},"-="+robotTurnDur).finished.then(()=>{
-  let robotBodyBox = document.getElementById("robot-body");
-  let rightArm = robotBodyBox.children[2];
-  let leftArm = robotBodyBox.children[0];
-  robotBodyBox.prepend(rightArm);
-  robotBodyBox.append(leftArm);
-  let newTimeLine = anime.timeline({
-
+      targets: "#pulse-path",
+      duration: lightningPathDur*4,
+      easing: "easeOutQuad",
+      strokeDashoffset: -31,
+   })
+   let eyesLoop = anime.timeline({
+   }).add({
+      targets: "#lightning-effect path",
+      strokeDashoffset: [anime.setDashoffset,0],
+      duration: lightningPathDur,
+      stroke: ["#f0e68c","#f0e68c","#800000","#4b0082"],
+      easing: "linear",
+   }).add({
+      delay: 250,
+      targets: "#lightning-effect path",
+      strokeDashoffset: -9,
+      duration: lightningPathDur,
+      easing: "linear",
+      opacity: 0,
+   }).add({
+      targets: "#antena-led",
+      fill: "#f0e68c",
+      easing: "easeOutBounce",
+      duration: lightningPathDur*4,
+   }).add({
+      targets: "#antena-effect circle",
+      scale: [0,3],
+      duration: lightningPathDur * 2,
+      easing: "linear",
+   }).add({
+      targets: "#antena-effect circle",
+      strokeWidth: 0,
+      duration: lightningPathDur,
+      easing: "linear",
+   }).add({
+      targets: "#chest-screen rect",
+      fill: "#f0e68c",
+      duration: lightningPathDur,
+      easing: "linear",
+   }).add({
+      targets: "#eyes ellipse",
+      fill: ["#ffffff","#f0e68c"],
+      duration: robotEyesDur,
+      easing: "easeInOutBounce"
+   }).add({
+      targets: "#eyes ellipse",
+      fill: ["#ffffff","#f0e68c"],
+      duration: robotEyesDur,
+      easing: "easeInOutBounce"
+   }).add({
+      targets: "#heart-path path",
+      strokeDashoffset: [anime.setDashoffset,0],
+      duration: robotEyesDur,
+      easing: "linear"
+   }).add({
+      targets: "#heart-path path",
+      duration: robotEyesDur,
+      easing: "linear",
+      fill: "#4b0082",
+   }).add({
+      targets: "#star-eye",
+      opacity: [0,1],
+      scale: [0.1,1],
+      duration: robotEyesDur*2,
+      easing: "linear" 
+   },"-="+robotEyesDur*2).add({
+      targets: "#left-arm #top-part-l",
+      duration: armTurnDur,
+      rotate: 90,
+      easing: "linear",
+   }).add({
+      targets: "#right-arm #top-part-r",
+      duration: armTurnDur,
+      rotate: -90,
+      easing: "linear",
+   },"-="+armTurnDur).add({
+      targets: "#left-arm #bot-part-l",
+      translateX: -botArmtranslateX,
+      translateY: -botArmtranslateY,
+      duration: armTurnDur,
+      easing: "linear"
+   },"-=" + armTurnDur).add({
+      targets: "#right-arm #bot-part-r",
+      translateX: botArmtranslateX,
+      translateY: -botArmtranslateY,
+      duration: armTurnDur,
+      easing: "linear"
+   },"-=" + armTurnDur).add({
+      delay: 500,
+      targets: "#right-arm #bot-part-r",
+      scaleY: -1,
+      duration: armTurnDur,
+      easing: "linear", 
+   }).add({
+      delay: 500,
+      targets: "#left-arm #bot-part-l",
+      scaleY: -1,
+      duration: armTurnDur,
+      easing: "linear", 
+   }).add({
+      targets: "#right-arm #bot-part-r",
+      scaleY: 1,
+      duration: armTurnDur,
+      easing: "linear", 
+   },"-="+armTurnDur).add({
+      delay: 500,
+      targets: "#left-arm #bot-part-l",
+      scaleY: 1,
+      duration: armTurnDur,
+      easing: "linear", 
+   }).add({
+      targets: "#right-arm #bot-part-r",
+      scaleY: -1,
+      duration: armTurnDur,
+      easing: "linear", 
+   },"-="+armTurnDur).add({//robot head side move
+      targets: "#robot-head",
+      translateX: -headSideMovementX,
+      duration: armTurnDur,
+      easing: "linear",
+      }).add({
+      targets: "#antena-body",
+      d: [{
+         value: antenaRight 
+      }],
+      duration: armTurnDur,
+      easing: "linear"
+   },"-="+armTurnDur).add({
+      targets: "#antena-bulb",
+      rotate: antenaAngle,
+      duration: armTurnDur,
+      easing: "linear"
+   },"-="+armTurnDur).add({
+      targets: "#antena-body",
+      d: [{
+         value: antenaLeft 
+      }],
+      duration: armTurnDur,
+      easing: "easeOutBounce"
+   }).add({
+      targets: "#antena-bulb",
+      rotate: -antenaAngle,
+      duration: armTurnDur,
+      easing: "easeOutBounce"
+   },"-="+armTurnDur).add({
+      targets: "#robot-head",
+      translateX: "+="+headSideMovementX*2,
+      duration: armTurnDur*2,
+      easing: "linear",
+   }).add({
+      targets: "#antena-body",
+      d: [{
+         value: antenaRight,
+      }],
+      duration: armTurnDur*2,
+      easing: "easeOutBounce"
+   },).add({
+      targets: "#antena-bulb",
+      rotate: "+="+ antenaAngle*2,
+      duration: armTurnDur*2,
+      easing: "easeOutBounce"
+   },"-="+armTurnDur*2).add({//2nd round
+      targets: "#robot-head",
+      translateX: "-=" + (headSideMovementX*2),
+      duration: armTurnDur*2,
+      easing: "linear",
+      }).add({
+      targets: "#antena-body",
+      d: [{
+         value: antenaLeft 
+      }],
+      duration: armTurnDur,
+      easing: "easeOutBounce"
+   }).add({
+      targets: "#antena-bulb",
+      rotate: -antenaAngle,
+      duration: armTurnDur,
+      easing: "easeOutBounce"
+   },"-="+armTurnDur).add({//last round back to center
+      targets: "#robot-head",
+      translateX: "+="+headSideMovementX,
+      duration: armTurnDur,
+      easing: "linear",
+   }).add({
+      targets: "#antena-body",
+      d: [{
+         value: antenaRight,
+      }],
+      duration: armTurnDur,
+      easing: "easeOutBounce"
+   },).add({
+      targets: "#antena-bulb",
+      rotate: "+="+ antenaAngle*2,
+      duration: armTurnDur,
+      easing: "easeOutBounce"
+   },"-="+armTurnDur).add({
+      targets: "#antena-body",
+      d: [{
+         value: antenaLeft,
+      }],
+      duration: armTurnDur/2,
+      easing: "easeOutBounce"
+   },).add({
+      targets: "#antena-bulb",
+      rotate: "-="+ antenaAngle*2,
+      duration: armTurnDur/2,
+      easing: "easeOutBounce"
+   },"-="+armTurnDur/2).add({
+      targets: "#antena-body",
+      d: [{
+         value: antenaMid,
+      }],
+      duration: armTurnDur/4,
+      easing: "easeOutBounce"
+   },).add({
+      targets: "#antena-bulb",
+      rotate: "+="+ antenaAngle,
+      duration: armTurnDur/4,
+      easing: "easeOutBounce"
+   },"-="+armTurnDur/4)//robot start moving side way
+   .add({
+      targets: "#robot-body-box",
+      scaleX: 0.7,
+      duration: robotTurnDur,
+      easing: "linear",
+   }).add({
+      targets: "#chest-screen",
+      translateX:-2,
+      duration: robotTurnDur,
+      easing: "linear",
+   },"-="+robotTurnDur).add({
+      targets: "#right-arm",
+      translateX:-5,
+      duration: robotTurnDur,
+      easing: "linear",
+   }, "-="+robotTurnDur).add({
+      targets: "#left-arm",
+      translateX:5,
+      duration: robotTurnDur,
+      easing: "linear",
+   },"-="+robotTurnDur).add({//arm into first position
+      targets: "#bot-part-r",
+      rotate: 180,
+      duration: robotTurnDur,
+      easing: "linear",
+   }).add({
+      targets: '#top-part-r',
+      rotate: "+=90",
+      duration: robotTurnDur,
+      easing: "linear",
+   }).add({
+      targets: "#bot-part-r",
+      rotate: 90,
+      translateX: 0,
+      translateY: 0.5,
+      duration: robotTurnDur,
+      easing: "linear",
+   },"-=" + robotTurnDur).add({
+      targets: "#bot-part-l",
+      translateX: 0,
+      translateY: 0.5,
+      duration: robotTurnDur,
+      easing: "linear",
+   },"-="+(robotTurnDur*2)).add({
+      targets: "#top-part-l",
+      rotate: "-=90",
+      duration: robotTurnDur,
+      easing: "linear",
+   },"-="+(robotTurnDur*2)).add({
+      targets: "#bot-part-l",
+      rotate: "+=90",
+      duration: robotTurnDur,
+      easing: "linear"
+   },"-="+robotTurnDur).add({//Robot start turning again
+      delay: delayBetweenTurn,
+      targets: "#robot-body-box",
+      scaleX: 1,
+      duration: robotTurnDur,
+      easing: "linear"
+   }).add({
+      targets: "#chest-screen",
+      translateX:"+=2",
+      duration: 500,
+      easing: "linear",
+   },"-="+robotTurnDur).add({
+      targets: "#top-part-r, #bot-part-r",
+      translateX:"+=5",
+      duration: robotTurnDur,
+      easing: "linear",
+   }, "-="+robotTurnDur).add({
+      targets: "#left-arm",
+      translateX:"-=5",
+      duration: robotTurnDur,
+      easing: "linear", //What left? scale the bot part of both arms to make turn illusion
+   },"-="+robotTurnDur).add({
+      targets: "#wrapper-bot-l",
+      scaleX: 0.4,
+      duration: robotTurnDur,
+      easing: "linear",
+   },"-="+robotTurnDur).add({
+      targets: "#wrapper-bot-r",
+      scaleX: 0.4,
+      duration: robotTurnDur,
+      easing: "linear",
+   },"-="+robotTurnDur).add({
+      targets: "#bot-part-r",
+      translateX: "+=116.8",
+      duration: robotTurnDur,
+      easing: "linear",
+   },"-="+robotTurnDur).finished.then(()=>{
+     let robotBodyBox = document.getElementById("robot-body");
+     let rightArm = robotBodyBox.children[2];
+     let leftArm = robotBodyBox.children[0];
+     robotBodyBox.prepend(rightArm);
+     robotBodyBox.append(leftArm);
+     robotSecondTimeline();
+   }) 
+   return eyesLoop;
+}
+let robotSecondTimeline = () =>{
+   let newTimeLine = anime.timeline({
   }).add({//Robot start turning to the other side
+   delay: delayBetweenTurn,
    targets: "#robot-body-box",
    scaleX: 0.7,
    duration: robotTurnDur,
@@ -1287,32 +1344,183 @@ let eyesLoop = anime.timeline({
    translateX: "+=5.5",
    duration: robotTurnDur,
    easing: "linear",
-},"-="+robotTurnDur);
-})
+},"-="+robotTurnDur).add({//Robot start turning again
+   delay: delayBetweenTurn,
+   targets: "#robot-body-box",
+   scaleX: 1,
+   duration: robotTurnDur,
+   easing: "linear"
+}).add({
+   targets: "#chest-screen",
+   translateX:"-=2",
+   duration: 500,
+   easing: "linear",
+},"-="+robotTurnDur).add({
+   targets: "#top-part-r, #bot-part-r",
+   translateX:"+=5",
+   duration: robotTurnDur,
+   easing: "linear",
+}, "-="+robotTurnDur).add({
+   targets: "#top-part-l",
+   translateX:"-=10",
+   duration: robotTurnDur,
+   easing: "linear",
+}, "-="+robotTurnDur).add({
+   targets: "#left-arm",
+   translateX:"+=5",
+   duration: robotTurnDur,
+   easing: "linear", //What left? scale the bot part of both arms to make turn illusion
+},"-="+robotTurnDur).add({
+   targets: "#wrapper-bot-l",
+   scaleX: 0.4,
+   translateX: "-=10",
+   duration: robotTurnDur,
+   easing: "linear",
+},"-="+robotTurnDur).add({
+   targets: "#wrapper-bot-r",
+   scaleX: 0.4,
+   duration: robotTurnDur,
+   easing: "linear",
+},"-="+robotTurnDur).add({
+   targets: "#bot-part-r",
+   translateX: "+=112",
+   duration: robotTurnDur,
+   easing: "linear",
+},"-="+robotTurnDur).add({
+   targets: "#bot-part-l",
+   translateX: "-=21",
+   duration: robotTurnDur,
+   easing: "linear",
+},"-="+(robotTurnDur*0.85)).finished.then(()=>{
+   robotHeadspinner(400,15);
+   let secondPathTimeline = anime.timeline({
+      loop: 20,
+      easing: "linear",
+      direction: "alternate"
+   }).add({
+      targets: ".spin-paths",
+      duration: 1000,
+      strokeDashoffset: [anime.setDashoffset,50],
+   })
+/*      document.getElementById("robot-svg").remove();
+      document.getElementById("robot").append(robotOriginalForm);
+      robotTimeline1(); */
+});
+}
+robotTimeline1();
 //pulse loop
-let pulsePath = anime.timeline({
-   loop: true,
-}).add({
-   delay: delayDur*1.3,
-   targets: "#pulse-path",
-   duration: lightningPathDur*4,
-   easing: "easeOutQuad",
-   strokeDashoffset: [anime.setDashoffset,0],
-}).add({
-   targets: "#pulse-path",
-   duration: lightningPathDur*4,
-   easing: "easeOutQuad",
-   strokeDashoffset: -31,
-})
+
 //eye dizzy
-let dizzyEyes = anime.timeline({
+/* let dizzyEyes = anime.timeline({
    loop: true,
 }).add({
    targets: "#eye-dizzy path",
    rotate: 360,
    duration: 1000,
    easing: "linear"
-})
+}) */
+let robotHeadspinner = (dur, lp = 1) =>{
+   let moveSideOffsetL = 15;
+   let moveSideOffsetS = 5;
+   let earOffset = 22;
+   let robotHeadClone = document.getElementById("robot-head").cloneNode(true);
+   let timer = anime.timeline({
+      easing: "linear",
+   }).add({
+      targets: "#left-group-eye",
+      translateX: "-=" + moveSideOffsetS,
+      scaleX: 0,
+      duration: dur,
+   }).add({
+      targets: "#right-group-eye",
+      translateX: "-=" + moveSideOffsetL,
+      scaleX: 0,
+      duration: dur*1.5,
+   },"-=" + dur).add({
+      targets: "#mouth",
+      scaleX: -1,
+      duration: 0,
+   },"-=" + dur).add({
+      targets: "#mouth",
+      duration: dur*1.5,
+      translateX: moveSideOffsetL*1.1,
+      strokeDashoffset: [0,anime.setDashoffset],
+   },"-=" + (dur*1.5)).add({
+      targets: "#left-ear",
+      translateX: "+=" +earOffset,
+      duration: dur*2,
+   }, "-=" + (dur*1.5)).add({
+      targets: "#right-ear",
+      translateX: "-=" +earOffset,
+      duration: dur*2,
+   },"-=" + dur*2).add({
+      targets: "#right-group-eye, #left-group-eye",
+      translateX: "+=20",
+      duration: dur/2,
+   },"-=" + dur/2).finished.then(()=>{
+      let leftEar = document.getElementById("left-ear");
+      let rightEar = document.getElementById("right-ear");
+      let head = document.getElementById("robot-head");
+      head.append(leftEar);
+      head.prepend(rightEar);
+      robotHeadspinner2(dur,robotHeadClone,lp);
+   })
+}
+let robotHeadspinner2 = (dur,clone,lp) =>{
+   let earOffset = 22;
+   let moveSideOffsetL = 15;
+   let moveSideOffsetS = 5;
+   let eyesOffset = 20;
+   let timeline2 = anime.timeline({
+      easing: "linear"
+   }).add({
+      targets: "#left-ear",
+      translateX: "-=" +earOffset,
+      duration: dur*2,
+   }).add({
+      targets: "#right-ear",
+      translateX: "+=" +earOffset,
+      duration: dur*2,
+   },"-=" + dur*2).add({
+      targets: "#left-group-eye",
+      scaleX: 1,
+      translateX: "-="+moveSideOffsetL,
+      duration: dur,
+   },"-=" + dur).add({
+      targets: "#right-group-eye",
+      scaleX: 1,
+      translateX: "-="+moveSideOffsetS,
+      duration: dur,
+   }, "-=" + dur).add({
+      targets: "#mouth",
+      scaleX: 1,
+      translateX: "+="+eyesOffset, 
+      duration: 0,
+   },"-=" + dur).add({
+      targets: "#mouth",
+      duration: dur*1.5,
+      translateX: "-=" + (moveSideOffsetL*1.34),
+      strokeDashoffset: [anime.setDashoffset,0],
+   },"-=" + (dur*1.5)).finished.then(()=>{
+      //Robot head reset
+      document.getElementById("robot-head").remove()
+      let robotSVG = document.getElementById("robot-svg");
+      robotSVG.insertBefore(clone,robotSVG.children[2]);
+      lp -= 1;
+      if(lp >3){
+            dur = dur / 2
+         robotHeadspinner(dur,lp);
+      } else if(lp <= 3 && lp > 0){
+         dur =  100 * (4-lp);
+         robotHeadspinner(dur,lp)
+      } else {//end of spinner, continue
+
+      }
+      })
+}
+
+
+
 let stopAllIdleAnimation = () => {
    ballSqueeze.pause();
    flowerTimeline.pause();

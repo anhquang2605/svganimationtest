@@ -315,3 +315,18 @@ body{
    transform-origin: 300% 300%;
    transform-box: fill-box;
 }
+#robot-head{
+   transform-origin: center;
+   transform-box: fill-box;
+}
+#left-group-eye, #right-group-eye{
+   transform-origin: center;
+   transform-box: fill-box;
+}
+#mouth{
+   transform-origin: center;
+   transform-box: fill-box;
+}
+.spin-paths{
+   stroke-dasharray: 20 10 5;
+}
