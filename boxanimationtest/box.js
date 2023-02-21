@@ -1535,4 +1535,9 @@ document.getElementById("play").addEventListener("click", ()=>{
    ballMoveAlong.play();
    cameraMoveAlong.play();
 })
-
+setInterval(() => {
+   closeTheBox();
+   setTimeout(() => {
+      openTheBox();
+   }, 2000);
+}, 5000);

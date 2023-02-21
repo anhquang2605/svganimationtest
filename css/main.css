@@ -1,0 +1,20 @@
+*{
+    box-sizing: border-box;
+}
+a{
+    text-decoration: none;
+    padding: 0;
+    margin: 0;
+    display:block;
+    color:black;
+}
+.btn-primary, .badge.text-bg-primary{
+    background-color: indigo!important;
+    border: none;
+}
+.attention{
+    color: tomato;
+}
+a.btn-primary:hover{
+    filter:brightness(0.80);
+}
